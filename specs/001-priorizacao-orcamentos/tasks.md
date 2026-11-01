@@ -6,7 +6,7 @@ Cada tarefa gera um commit e só é marcada depois de verificada. Se uma tarefa 
 
 ## Fase 1: Ambiente
 
-- [ ] **T01** Criar `docker-compose.yml` e `.env.example` com PostgreSQL 16.
+- [x] **T01** Criar `docker-compose.yml` e `.env.example` com PostgreSQL 16.
   - Verificação: o container fica saudável e aceita conexão.
 - [ ] **T02** Criar `requirements.txt` e o ambiente virtual.
   - Verificação: `streamlit`, `plotly`, `psycopg` e `pytest` são importados.
