@@ -8,7 +8,7 @@ Cada tarefa gera um commit e só é marcada depois de verificada. Se uma tarefa 
 
 - [x] **T01** Criar `docker-compose.yml` e `.env.example` com PostgreSQL 16.
   - Verificação: o container fica saudável e aceita conexão.
-- [ ] **T02** Criar `requirements.txt` e o ambiente virtual.
+- [x] **T02** Criar `requirements.txt` e o ambiente virtual.
   - Verificação: `streamlit`, `plotly`, `psycopg` e `pytest` são importados.
 
 ## Fase 2: Protótipo de risco
