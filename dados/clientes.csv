@@ -1,0 +1,61 @@
+cod_cliente,nome,cidade,segmento,prazo_pagamento_dias,desconto_maximo_pct,cliente_desde
+C001,Metalúrgica Andrade,Contagem,Indústria,28,5,2016-03-10
+C002,Oficina do Zé,Betim,Oficina,0,0,2019-08-22
+C003,Ferragens Central,Belo Horizonte,Revenda,30,8,2012-01-15
+C004,Usina Vale do Aço,Ipatinga,Indústria,45,10,2010-06-01
+C005,Construtora Horizonte,Belo Horizonte,Construtora,30,5,2021-02-08
+C006,Autopeças Betim,Betim,Revenda,21,5,2015-11-30
+C007,Laticínios Serra Verde,Sete Lagoas,Indústria,28,5,2018-04-17
+C008,Mineração Pedra Alta,Nova Lima,Indústria,45,10,2009-09-09
+C009,Transportadora Rota Minas,Contagem,Transporte,14,3,2022-07-04
+C010,Móveis Lima,Ubá,Indústria,30,5,2017-05-23
+C011,Prefeitura de Betim - Almoxarifado,Betim,Setor público,30,0,2020-10-12
+C012,Cervejaria Alto Cerrado,Betim,Indústria,28,5,2023-01-20
+C013,Engenharia Vista Alegre,Nova Lima,Construtora,30,5,2026-01-01
+C014,Empreiteira Boa Vista,Montes Claros,Construtora,30,5,2011-01-01
+C015,Cooperativa Paraopeba,Divinópolis,Agronegócio,28,3,2021-11-03
+C016,Distribuidora Santa Rita,Belo Horizonte,Revenda,30,8,2013-04-27
+C017,Cooperativa Campo Belo,Sabará,Agronegócio,28,3,2025-07-25
+C018,Metalúrgica Jequitibá,Juiz de Fora,Indústria,30,5,2020-08-16
+C019,Retífica Serra Azul,Nova Lima,Oficina,0,0,2016-03-23
+C020,Construtora Três Marias,Nova Lima,Construtora,30,3,2021-12-30
+C021,Transportadora Vista Alegre,Itabira,Transporte,14,3,2015-01-18
+C022,Cerâmica Santa Rita,Contagem,Indústria,45,5,2009-02-11
+C023,Engenharia Mantiqueira,Montes Claros,Construtora,30,3,2025-10-31
+C024,Construtora Vista Alegre,Nova Lima,Construtora,30,5,2017-10-27
+C025,Casa do Parafuso São Lucas,Ipatinga,Revenda,21,8,2025-07-17
+C026,Oficina Vale Verde,Pará de Minas,Oficina,0,3,2026-03-18
+C027,Construtora Boa Vista,Ipatinga,Construtora,30,3,2021-03-27
+C028,Logística Itatiaia,Contagem,Transporte,21,3,2026-02-06
+C029,Retífica Boa Vista,Contagem,Oficina,0,0,2023-08-22
+C030,Mecânica Campo Belo,Betim,Oficina,14,0,2018-11-02
+C031,Fundição Jequitibá,Varginha,Indústria,45,10,2016-09-22
+C032,Empreiteira São Lucas,Uberlândia,Construtora,30,3,2016-01-06
+C033,Prefeitura de Nova Lima,Nova Lima,Setor público,30,0,2019-12-27
+C034,Ferragens Mantiqueira,Contagem,Revenda,21,8,2022-05-15
+C035,Oficina Horizonte Novo,Divinópolis,Oficina,14,0,2025-12-09
+C036,Usinagem Alvorada,Sete Lagoas,Indústria,28,5,2025-04-11
+C037,Alimentos Horizonte Novo,Governador Valadares,Indústria,30,5,2015-12-24
+C038,Fazenda São Geraldo,Sete Lagoas,Agronegócio,28,5,2025-06-13
+C039,Cooperativa Cristal,Ipatinga,Agronegócio,45,3,2016-05-22
+C040,Autopeças Santa Clara,Nova Lima,Revenda,30,8,2014-09-04
+C041,Ferragens Lagoa Dourada,Belo Horizonte,Revenda,21,8,2019-06-29
+C042,Construtora Nova Aurora,Montes Claros,Construtora,30,5,2018-08-05
+C043,Laticínios Rio Doce,Ipatinga,Indústria,45,10,2013-11-02
+C044,Fazenda Dois Irmãos,Betim,Agronegócio,45,5,2017-01-14
+C045,Fundição Mantiqueira,Belo Horizonte,Indústria,45,5,2024-02-17
+C046,Consórcio Intermunicipal de Sabará,Sabará,Setor público,30,0,2010-10-24
+C047,Engenharia Paraopeba,Juiz de Fora,Construtora,30,5,2026-01-20
+C048,Alimentos Bom Jesus,Varginha,Indústria,28,10,2009-07-01
+C049,Usinagem Monte Alto,Divinópolis,Indústria,28,10,2025-06-15
+C050,Agropecuária Mantiqueira,Sete Lagoas,Agronegócio,28,3,2025-04-25
+C051,Construtora Primavera,Belo Horizonte,Construtora,30,5,2016-11-26
+C052,Cerâmica Santa Clara,Itabira,Indústria,45,5,2020-03-01
+C053,Metalúrgica Rio Doce,Governador Valadares,Indústria,28,5,2024-03-09
+C054,Cooperativa Ipê Amarelo,Contagem,Agronegócio,45,3,2025-11-14
+C055,Cerâmica Pedra Branca,Belo Horizonte,Indústria,28,5,2015-07-17
+C056,Cooperativa São Geraldo,Itabira,Agronegócio,45,3,2026-02-12
+C057,Logística Pampulha,Itabira,Transporte,21,3,2014-03-21
+C058,Prefeitura de Divinópolis,Divinópolis,Setor público,30,0,2015-06-10
+C059,Retífica Morro Grande,Divinópolis,Oficina,7,0,2013-04-12
+C060,Construtora Ipê Amarelo,Itabira,Construtora,30,5,2025-09-17
