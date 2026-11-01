@@ -45,6 +45,9 @@ Cada tarefa gera um commit e só é marcada depois de verificada. Se uma tarefa 
 - [x] **T13** Montar `app/main.py` e ligar os visuais à seleção, conforme o Figma.
   - Cobre: RF5, RF6.
 
+- [x] **T13.1** Redesenhar o dashboard com componentes próprios e formatação condicional.
+  - Cobre: RF2, RN11, RN12, RN13 e CA11.
+
 ## Fase 6: Validação
 
 - [ ] **T14** Rodar todos os testes e o roteiro manual de cada linha da matriz de cross filter no navegador.

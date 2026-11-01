@@ -41,10 +41,19 @@ Uma única pessoa: o dono ou gestor da distribuidora, que decide o que liberar, 
 
 - **RN10 – KPIs com seleção ativa:** "Vencido" soma apenas os títulos que atendem à seleção. "Clientes bloqueados" conta os clientes bloqueados que têm algum desses títulos, mesmo que o bloqueio venha de outro título do cliente.
 
+- **RN11 – Cobertura do orçamento:** menor percentual, entre os itens do orçamento, de estoque sobre a demanda total da fila, limitado a 100%.
+- **RN12 – Atraso do orçamento:** maior atraso entre os títulos vencidos do cliente. Sem título vencido, o atraso é 0.
+- **RN13 – Formatação condicional:**
+
+| Medida | Bom | Atenção | Crítico |
+|---|---|---|---|
+| Cobertura | 100% | 50% a 99% | Abaixo de 50% |
+| Atraso | 0 dias | 1 a 15 dias | Mais de 15 dias |
+
 ## Requisitos funcionais
 
 - **RF1:** Exibir KPIs de valor na fila, quantidade por classe, valor vencido, clientes bloqueados e produtos em ruptura. (PN1, PN2, PN4)
-- **RF2:** Exibir a fila com orçamento, cliente, valor, classe e motivo da classe. (PN1, PN2)
+- **RF2:** Exibir a fila agrupada por classe, com orçamento, cliente, valor, cobertura, atraso e motivo, destacando visualmente valor, cobertura e atraso conforme a RN13. (PN1, PN2)
 - **RF3:** Exibir o valor vencido por cliente e faixa de atraso. (PN4)
 - **RF4:** Exibir os produtos em ruptura com demanda, estoque e prazo de reposição. (PN3)
 - **RF5:** Permitir cross filter entre os visuais conforme a matriz abaixo. (H2, H3)
@@ -102,6 +111,10 @@ Sem seleção ativa, com data de referência 28/08/2026:
 - **CA8:** Ao selecionar Móveis Lima (C010), a fila mostra apenas orçamentos desse cliente e os KPIs acompanham.
 - **CA9:** Limpar as seleções devolve exatamente os valores de CA1 a CA6.
 - **CA10:** O alerta mostra 6 créditos sem NF, somando R$ 12.978,95.
+- **CA11:** Casos de formatação:
+  - PED003 tem cobertura de 100% (Bom) e atraso de 0 dias (Bom).
+  - PED009 tem cobertura de 0% (Crítico).
+  - PED008 tem cobertura de 65% (Atenção) e atraso de 20 dias (Crítico).
 
 ## Fora de escopo
 

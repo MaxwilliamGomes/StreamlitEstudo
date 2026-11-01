@@ -105,6 +105,25 @@ rupturas AS (
     JOIN vw_produto_ruptura r USING (cod_produto)
     GROUP BY i.cod_pedido
 ),
+demanda AS (
+    SELECT cod_produto, sum(quantidade) AS total
+    FROM vw_orcamento_item
+    GROUP BY cod_produto
+),
+coberturas AS (
+    SELECT i.cod_pedido,
+           min(least(100, round(pr.estoque * 100.0 / d.total)))::integer AS cobertura_pct
+    FROM vw_orcamento_item i
+    JOIN produtos pr USING (cod_produto)
+    JOIN demanda d USING (cod_produto)
+    GROUP BY i.cod_pedido
+),
+atrasos AS (
+    SELECT cod_cliente, max(dias_atraso) AS maior_atraso
+    FROM vw_titulo_saldo
+    WHERE vencido
+    GROUP BY cod_cliente
+),
 classificados AS (
     SELECT o.cod_pedido,
            pe.data,
@@ -113,6 +132,18 @@ classificados AS (
            c.segmento,
            pe.canal,
            o.valor,
+           co.cobertura_pct,
+           coalesce(a.maior_atraso, 0) AS maior_atraso,
+           CASE
+               WHEN co.cobertura_pct = 100 THEN 'Bom'
+               WHEN co.cobertura_pct >= 50 THEN 'Atenção'
+               ELSE 'Crítico'
+           END AS nivel_cobertura,
+           CASE
+               WHEN coalesce(a.maior_atraso, 0) = 0 THEN 'Bom'
+               WHEN a.maior_atraso <= 15 THEN 'Atenção'
+               ELSE 'Crítico'
+           END AS nivel_atraso,
            CASE
                WHEN b.cod_cliente IS NOT NULL THEN 'Bloqueado'
                WHEN r.cod_pedido IS NOT NULL THEN 'Ruptura'
@@ -128,6 +159,8 @@ classificados AS (
     JOIN clientes c ON c.cod_cliente = o.cod_cliente
     LEFT JOIN vw_cliente_bloqueado b ON b.cod_cliente = o.cod_cliente
     LEFT JOIN rupturas r USING (cod_pedido)
+    LEFT JOIN coberturas co USING (cod_pedido)
+    LEFT JOIN atrasos a ON a.cod_cliente = o.cod_cliente
 )
 SELECT *,
        row_number() OVER (

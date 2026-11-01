@@ -9,7 +9,7 @@
 |---|---|---|
 | Linguagem | Python 3.12 | Já instalado |
 | Dashboard | Streamlit | Definido na constituição |
-| Gráficos | Plotly | Devolve os pontos clicados ao Streamlit |
+| Visuais clicáveis | `st.components.v2` | HTML próprio permite formatação condicional e devolve o clique. Plotly fica só no protótipo da T03 |
 | Banco | PostgreSQL 16 em Docker Compose | Definido na constituição |
 | Acesso ao banco | psycopg 3 | Cliente direto, com SQL explícito para estudo |
 | Testes | pytest | Já instalado |
@@ -33,7 +33,8 @@ app/
   main.py               monta a página
   dados.py              lê as views
   selecao.py            estado e aplicação do cross filter
-  visuais.py            KPIs, tabela e gráficos
+  componentes.py        visuais clicáveis em HTML, CSS e JavaScript
+  visuais.py            tema, formatação e dados de exibição
 tests/
   test_regras.py        CA1 a CA7 e CA10, nas views
   test_selecao.py       CA8, CA9 e matriz de cross filter
@@ -63,37 +64,22 @@ A NF do extrato é extraída da descrição com a expressão `NF-[0-9]+`.
 
 Fluxo a cada clique:
 
-1. O visual devolve o item clicado.
-2. `selecao.py` atualiza o estado em `st.session_state`, a única fonte de verdade (princípio 7).
+1. O componente envia o item clicado como gatilho (`setTriggerValue`).
+2. O callback atualiza a seleção em `st.session_state`, a única fonte de verdade (princípio 7).
 3. O Streamlit reexecuta a página.
 4. `aplicar_selecao()` filtra os dados já carregados, e todos os visuais são redesenhados.
 
-`aplicar_selecao()` é uma função pura, sem nenhuma dependência do Streamlit. Isso permite testar a matriz de cross filter com pytest. Ela usa `vw_orcamento_item` para ligar cliente, orçamento e produto.
+`aplicar_selecao()` é uma função pura, sem nenhuma dependência do Streamlit. Ela usa `vw_orcamento_item` para ligar cliente, orçamento e produto. A filtragem apenas escolhe linhas, sem recalcular regras (princípio 6).
 
-Os dados das views são carregados uma vez, em cache, e filtrados em memória. Isso mantém a interação rápida, e o volume é pequeno. A filtragem da seleção não recalcula regras: ela apenas escolhe linhas, respeitando o princípio 6.
-
-| Visual | Componente | Como informa a seleção |
+| Visual | Componente | Gatilho |
 |---|---|---|
-| Vencidos | Plotly barras empilhadas | `on_select="rerun"`, com cliente e faixa em `customdata` |
-| Rupturas | Plotly barras | `on_select="rerun"`, com o produto em `customdata` |
-| Fila | `st.dataframe` | `on_select="rerun"`, com `selection_mode="single-row"` |
+| Fila | `componentes.fila` | `linha` |
+| Vencidos | `componentes.vencidos` | `faixa` e `cliente` |
+| Rupturas | `componentes.rupturas` | `produto` |
 
 ## Riscos validados na T03
 
-Testados no navegador com Streamlit 1.66.1 e `prototipos/cross_filter.py`.
-
-| Risco | Resultado | Decisão |
-|---|---|---|
-| Repetir o clique não remove a seleção | Confirmado: o redesenho zera o widget, e o clique chega como evento novo | Tratar a seleção em callback de `on_select` e alternar quando o valor já estiver selecionado |
-| Seleção do widget não limpa por código | Confirmado e resolvido | Incrementar uma versão usada na `key` dos widgets a cada limpeza |
-| Redesenho apaga o destaque no gráfico de origem | Resolvido | Calcular a cor de cada barra a partir do estado, sem depender da seleção do Plotly |
-| Tabela guarda a posição da linha, não o orçamento | Confirmado: o estado segue correto, mas a marcação some quando a fila muda | Guardar o código do orçamento no estado, alternar a seleção como nos gráficos e mostrar o destaque em uma coluna da fila |
-
-O callback substitui a comparação com o último evento, prevista na versão inicial do plano, e evita que um gráfico desenhado antes fique desatualizado na mesma execução.
-
-Também passaram: combinação de seleções entre visuais, nova seleção depois de remover ou limpar e clique na tabela.
-
-Não foi testado: desmarcar uma linha pela própria tabela. O caso entra no roteiro manual da T14.
+O protótipo com Plotly e `st.dataframe` validou o fluxo de seleção e mostrou seus limites: seleção interna do widget, chave versionada para limpar e posição de linha na tabela. O redesenho trocou esses visuais por componentes próprios. Com gatilhos, cada clique chega uma vez, e o destaque vem sempre do estado, o que elimina esses três problemas.
 
 ## Testes por critério de aceite
 
@@ -105,41 +91,17 @@ Não foi testado: desmarcar uma linha pela própria tabela. O caso entra no rote
 
 ## Figma
 
-[Mockup no Figma](https://www.figma.com/design/uYQsNc90YJTsOzRnH2g9Pr). A versão aprovada é a **B Grafite**, na página **Versões A-B-C**, com os frames **B 01 Padrão** e **B 02 Cliente selecionado**. As demais versões ficam como histórico. Toda divergência será registrada aqui (princípio 10).
+O [mockup no Figma](https://www.figma.com/design/uYQsNc90YJTsOzRnH2g9Pr) registra a evolução do layout, mas a versão B foi superada na revisão do dashboard, feita a pedido do usuário. **O dashboard é hoje a referência visual**, inspirada nas telas ATM Transaction de `Bi-Referencias`. A T15 decide como alinhar o Figma (princípio 10).
 
-Direção visual, baseada nas referências de `Bi-Referencias`:
+Direção visual atual:
 
-- Tela de 1440 × 900, com fundo grafite, cartões escuros, laranja `#f07a2c` como único destaque e fonte Source Sans 3.
-- Painel lateral com valor da fila, anel das classes e quantidades por classe.
-- Coluna central com vencidos e fila.
-- Coluna direita com indicadores, rupturas e alerta de créditos sem NF.
-- Chip laranja mostra a seleção ativa, ao lado de "Limpar seleções".
+- Fundo escuro com gradientes azul e vinho.
+- Painel azul à esquerda, com valor da fila, três anéis por classe e alerta de créditos sem NF.
+- Números grandes sem cartão, com cor conforme a situação.
+- Fila como protagonista, agrupada por classe, com barra de valor, barra de cobertura e pílula de atraso (RN13).
+- Vencidos e rupturas abaixo da fila, com altura fixa para a página não pular ao filtrar.
 
-Decisões de viabilidade no Streamlit:
-
-| Elemento | Como construir |
-|---|---|
-| Fundo, cartões e tipografia | CSS global |
-| Painel e indicadores | HTML próprio com `st.html`, sem interação |
-| Anel das classes | SVG no HTML do painel |
-| Faixas e barras clicáveis | Plotly, com fundo transparente |
-| Barra embutida na fila | `ProgressColumn` do `st.dataframe` |
-| Classe e linha selecionada | Texto com ícone (`✓`, `▲`, `✕`) e marcador na primeira coluna |
-
-A faixa de mais de 60 dias fica fora do visual enquanto não tiver dados (CA5).
-
-Divergências entre o Figma e o dashboard:
-
-| Divergência | Motivo |
-|---|---|
-| A fila ocupa toda a largura, abaixo de vencidos e rupturas | O mockup B omitiu a coluna Motivo, exigida pelo RF2, que não cabia na coluna central |
-| Indicadores e alerta ficam na mesma linha, acima dos gráficos | Consequência da fila em largura total |
-| Rupturas lista todos os produtos, com rolagem | Limitar a 7 impediria selecionar os demais (H3) |
-| Faixas abaixo de R$ 10 mil mostram o valor completo | Regra única de formatação |
-| Anel entra como imagem SVG | `st.html` remove SVG direto |
-| Tabela tem a coluna de seleção do Streamlit | Componente nativo do `st.dataframe` |
-
-Limites do `st.dataframe` e do Streamlit: alterações em `app/visuais.py` exigem reiniciar o servidor, porque módulos importados ficam em memória.
+Alterações em `app/visuais.py` e `app/componentes.py` exigem reiniciar o servidor, porque módulos importados ficam em memória.
 
 ## Verificação da constituição
 
@@ -152,4 +114,4 @@ Limites do `st.dataframe` e do Streamlit: alterações em `app/visuais.py` exige
 | 7. Cross filter explícito | `selecao.py` e `st.session_state` |
 | 8. Dados reproduzíveis | `carregar_dados.py` recria o banco a partir dos CSVs |
 | 9. Data de referência explícita | Tabela `parametros` |
-| 10. Figma como contrato | Seção Figma e registro de divergências |
+| 10. Figma como contrato | Seção Figma, com a divergência atual registrada e pendente da T15 |

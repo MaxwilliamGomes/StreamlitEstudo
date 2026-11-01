@@ -102,3 +102,11 @@ def test_rn8_ordem_da_fila(banco):
 def test_rn2_meio_centavo_arredonda_para_cima(banco):
     # O valor exato é 4.537,665; com float, o resultado cairia para 4.537,66.
     assert um(banco, "SELECT valor FROM vw_orcamento_classificado WHERE cod_pedido = 'PED2647'") == (D("4537.67"),)
+
+
+def test_ca11_formatacao_condicional(banco):
+    sql = """SELECT cobertura_pct, nivel_cobertura, maior_atraso, nivel_atraso
+             FROM vw_orcamento_classificado WHERE cod_pedido = '{}'"""
+    assert um(banco, sql.format("PED003")) == (100, "Bom", 0, "Bom")
+    assert um(banco, sql.format("PED009"))[:2] == (0, "Crítico")
+    assert um(banco, sql.format("PED008")) == (65, "Atenção", 20, "Crítico")
