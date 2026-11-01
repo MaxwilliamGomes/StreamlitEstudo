@@ -36,7 +36,7 @@ Cada tarefa gera um commit e só é marcada depois de verificada. Se uma tarefa 
 ## Fase 5: Dashboard
 
 - [x] **T09** Criar `app/dados.py`, com leitura das views e cache.
-- [ ] **T10** Criar `app/selecao.py` e `tests/test_selecao.py`, com testes primeiro.
+- [x] **T10** Criar `app/selecao.py` e `tests/test_selecao.py`, com testes primeiro.
   - Cobre: RF5, RF6, a matriz de cross filter, CA8 e CA9.
 - [ ] **T11** Criar KPIs, alerta e fila em `app/visuais.py`.
   - Cobre: RF1, RF2, RF7.
