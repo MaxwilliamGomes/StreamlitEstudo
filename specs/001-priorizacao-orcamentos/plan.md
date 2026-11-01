@@ -76,15 +76,22 @@ Os dados das views são carregados uma vez, em cache, e filtrados em memória. I
 | Rupturas | Plotly barras | `on_select="rerun"`, com o produto em `customdata` |
 | Fila | `st.dataframe` | `on_select="rerun"`, com `selection_mode="single-row"` |
 
-## Riscos
+## Riscos validados na T03
 
-| Risco | Efeito | Resposta |
+Testados no navegador com Streamlit 1.66.1 e `prototipos/cross_filter.py`.
+
+| Risco | Resultado | Decisão |
 |---|---|---|
-| Streamlit guarda o último clique no widget | O mesmo evento alternaria a seleção a cada reexecução | Comparar com o último evento processado |
-| Seleção do widget não limpa por código | "Limpar seleções" manteria o destaque | Trocar a `key` do widget a cada limpeza |
-| Redesenhar um gráfico muda seus dados | O visual de origem perderia o destaque | Manter todos os itens no visual de origem e destacar por cor |
+| Repetir o clique não remove a seleção | Confirmado: o redesenho zera o widget, e o clique chega como evento novo | Tratar a seleção em callback de `on_select` e alternar quando o valor já estiver selecionado |
+| Seleção do widget não limpa por código | Confirmado e resolvido | Incrementar uma versão usada na `key` dos widgets a cada limpeza |
+| Redesenho apaga o destaque no gráfico de origem | Resolvido | Calcular a cor de cada barra a partir do estado, sem depender da seleção do Plotly |
+| Tabela guarda a posição da linha, não o orçamento | Confirmado: o estado segue correto, mas a marcação some quando a fila muda | Guardar o código do orçamento no estado, alternar a seleção como nos gráficos e mostrar o destaque em uma coluna da fila |
 
-Esses riscos são a parte menos certa do plano. Por isso, a primeira tarefa de código será um protótipo mínimo do clique, com dados fictícios, antes de construir o restante.
+O callback substitui a comparação com o último evento, prevista na versão inicial do plano, e evita que um gráfico desenhado antes fique desatualizado na mesma execução.
+
+Também passaram: combinação de seleções entre visuais, nova seleção depois de remover ou limpar e clique na tabela.
+
+Não foi testado: desmarcar uma linha pela própria tabela. O caso entra no roteiro manual da T14.
 
 ## Testes por critério de aceite
 

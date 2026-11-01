@@ -13,7 +13,7 @@ Cada tarefa gera um commit e só é marcada depois de verificada. Se uma tarefa 
 
 ## Fase 2: Protótipo de risco
 
-- [ ] **T03** Criar um protótipo de cross filter com dados fictícios, fora de `app/`.
+- [x] **T03** Criar um protótipo de cross filter com dados fictícios, fora de `app/`.
   - Cobre: os três riscos do plano.
   - Verificação: no navegador, selecionar, remover a seleção repetindo o clique e limpar tudo funcionam sem alternância indevida.
   - Se falhar: revisar o plano antes de seguir.
