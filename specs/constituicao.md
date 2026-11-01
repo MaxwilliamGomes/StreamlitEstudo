@@ -19,7 +19,7 @@ Para mudar uma regra, altere este arquivo primeiro e registre o motivo no histó
 7. **Cross filter explícito.** O estado da seleção tem uma única fonte de verdade, e a spec declara o que cada visual filtra e não filtra.
 8. **Dados reproduzíveis.** `dados/originais/` é imutável, e a base é sempre recriada por `scripts/gerar_dados.py`.
 9. **Data de referência explícita.** Nenhum cálculo depende da data do sistema. O padrão é 28/08/2026.
-10. **Figma como contrato visual.** Toda divergência entre mockup e dashboard é registrada no plano com o motivo.
+10. **Figma como ponto de partida.** O mockup orienta o início do visual, e o dashboard validado é a referência final. Mudanças relevantes em relação ao mockup são registradas no plano com o motivo.
 
 ## Definição de pronto
 
@@ -28,3 +28,4 @@ Uma tarefa só termina quando seus critérios de aceite foram verificados e spec
 ## Histórico
 
 - 2026-11-01: versão inicial.
+- 2026-11-01: princípio 10 alterado. O visual evoluiu no dashboard depois do mockup, e manter o Figma como contrato exigiria retrabalho sem ganho para o estudo.

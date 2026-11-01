@@ -1,6 +1,6 @@
 # Spec 001: Priorização de orçamentos
 
-**Status:** esclarecida, pronta para o plano
+**Status:** implementada e validada
 **Data de referência:** 28/08/2026
 
 ## Problema

@@ -91,7 +91,16 @@ O protótipo com Plotly e `st.dataframe` validou o fluxo de seleção e mostrou 
 
 ## Figma
 
-O [mockup no Figma](https://www.figma.com/design/uYQsNc90YJTsOzRnH2g9Pr) registra a evolução do layout, mas a versão B foi superada na revisão do dashboard, feita a pedido do usuário. **O dashboard é hoje a referência visual**, inspirada nas telas ATM Transaction de `Bi-Referencias`. A T15 decide como alinhar o Figma (princípio 10).
+O [mockup no Figma](https://www.figma.com/design/uYQsNc90YJTsOzRnH2g9Pr) registra a evolução do layout e foi o ponto de partida (princípio 10). A versão B foi superada na revisão pedida pelo usuário, e **o dashboard validado é a referência visual**, inspirada nas telas ATM Transaction de `Bi-Referencias`.
+
+Principais diferenças em relação à versão B:
+
+| Mudança | Motivo |
+|---|---|
+| Fila no centro e com largura total | O mockup omitiu a coluna Motivo (RF2), e a tabela virou o visual principal |
+| Fundo azul e vinho no lugar do grafite | Revisão pedida pelo usuário, para dar mais vida ao dashboard |
+| Três anéis por classe no lugar de um | Referência ATM |
+| Formatação condicional na fila | Novo requisito (RN11 a RN13) |
 
 Direção visual atual:
 
@@ -114,4 +123,4 @@ Alterações em `app/visuais.py` e `app/componentes.py` exigem reiniciar o servi
 | 7. Cross filter explícito | `selecao.py` e `st.session_state` |
 | 8. Dados reproduzíveis | `carregar_dados.py` recria o banco a partir dos CSVs |
 | 9. Data de referência explícita | Tabela `parametros` |
-| 10. Figma como contrato | Seção Figma, com a divergência atual registrada e pendente da T15 |
+| 10. Figma como ponto de partida | Seção Figma, com as mudanças registradas |
