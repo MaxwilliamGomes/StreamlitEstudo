@@ -72,7 +72,7 @@ with direita:
         )
     with coluna_rupturas, st.container(key="cartao_rupturas"):
         st.html(
-            f'<p class="titulo">Produtos em ruptura</p><p class="sub">{len(recorte.rupturas)} produtos. '
+            f'<p class="titulo">Produtos em ruptura</p><p class="sub">{len(recorte.rupturas)} na lista. '
             "Barra: estoque coberto.</p>"
         )
         visuais.rupturas(
