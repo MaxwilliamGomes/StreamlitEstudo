@@ -105,23 +105,23 @@ Não foi testado: desmarcar uma linha pela própria tabela. O caso entra no rote
 
 ## Figma
 
-[Mockup no Figma](https://www.figma.com/design/uYQsNc90YJTsOzRnH2g9Pr), página **v2 Navy**, com os estados padrão e cliente selecionado. A página **v1 (rejeitada)** fica apenas como histórico. Toda divergência será registrada aqui (princípio 10).
+[Mockup no Figma](https://www.figma.com/design/uYQsNc90YJTsOzRnH2g9Pr). A versão aprovada é a **B Grafite**, na página **Versões A-B-C**, com os frames **B 01 Padrão** e **B 02 Cliente selecionado**. As demais versões ficam como histórico. Toda divergência será registrada aqui (princípio 10).
 
 Direção visual, baseada nas referências de `Bi-Referencias`:
 
-- Tela única de 1440 × 960, com fundo navy em gradiente e fonte Source Sans 3.
-- Painel lateral azul como destaque: valor da fila, participação de cada classe em anéis e alerta de créditos sem NF.
-- Indicadores sem cartão, em números grandes.
-- Vencidos com faixa total de atraso acima do ranking numerado de clientes.
-- Rupturas com barra fina de estoque e falta, além da falta e do prazo em texto.
-- Fila com barra de valor embutida na linha.
+- Tela de 1440 × 900, com fundo grafite, cartões escuros, laranja `#f07a2c` como único destaque e fonte Source Sans 3.
+- Painel lateral com valor da fila, anel das classes e quantidades por classe.
+- Coluna central com vencidos e fila.
+- Coluna direita com indicadores, rupturas e alerta de créditos sem NF.
+- Chip laranja mostra a seleção ativa, ao lado de "Limpar seleções".
 
 Decisões de viabilidade no Streamlit:
 
 | Elemento | Como construir |
 |---|---|
-| Fundo, painel e indicadores | CSS global e HTML próprio com `st.html`, sem interação |
-| Anéis | SVG no HTML do painel |
+| Fundo, cartões e tipografia | CSS global |
+| Painel e indicadores | HTML próprio com `st.html`, sem interação |
+| Anel das classes | SVG no HTML do painel |
 | Faixas e barras clicáveis | Plotly, com fundo transparente |
 | Barra embutida na fila | `ProgressColumn` do `st.dataframe` |
 | Classe e linha selecionada | Texto com ícone (`✓`, `▲`, `✕`) e marcador na primeira coluna |

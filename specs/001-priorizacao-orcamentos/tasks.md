@@ -30,7 +30,7 @@ Cada tarefa gera um commit e só é marcada depois de verificada. Se uma tarefa 
 
 ## Fase 4: Mockup
 
-- [ ] **T08** Desenhar a página no Figma, com KPIs, alerta, fila, vencidos e rupturas, incluindo o estado com seleção ativa.
+- [x] **T08** Desenhar a página no Figma, com KPIs, alerta, fila, vencidos e rupturas, incluindo o estado com seleção ativa.
   - Verificação: cada requisito RF1 a RF7 aparece no mockup, e você aprova o layout.
 
 ## Fase 5: Dashboard
