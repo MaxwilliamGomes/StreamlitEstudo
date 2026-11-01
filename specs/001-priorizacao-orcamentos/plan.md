@@ -105,13 +105,28 @@ Não foi testado: desmarcar uma linha pela própria tabela. O caso entra no rote
 
 ## Figma
 
-[Mockup no Figma](https://www.figma.com/design/uYQsNc90YJTsOzRnH2g9Pr), com os estados padrão e cliente selecionado. Ele define layout, hierarquia e cores de uma página única, em tema escuro, com fonte Source Sans 3. Toda divergência será registrada aqui (princípio 10).
+[Mockup no Figma](https://www.figma.com/design/uYQsNc90YJTsOzRnH2g9Pr), página **v2 Navy**, com os estados padrão e cliente selecionado. A página **v1 (rejeitada)** fica apenas como histórico. Toda divergência será registrada aqui (princípio 10).
+
+Direção visual, baseada nas referências de `Bi-Referencias`:
+
+- Tela única de 1440 × 960, com fundo navy em gradiente e fonte Source Sans 3.
+- Painel lateral azul como destaque: valor da fila, participação de cada classe em anéis e alerta de créditos sem NF.
+- Indicadores sem cartão, em números grandes.
+- Vencidos com faixa total de atraso acima do ranking numerado de clientes.
+- Rupturas com barra fina de estoque e falta, além da falta e do prazo em texto.
+- Fila com barra de valor embutida na linha.
 
 Decisões de viabilidade no Streamlit:
 
-- A classe aparece como texto com ícone (`✓`, `▲`, `✕`), pois `st.dataframe` não exibe pílulas coloridas.
-- A primeira coluna da fila marca a linha selecionada, conforme o risco validado na T03.
-- A faixa de mais de 60 dias fica fora da legenda enquanto não tiver dados (CA5).
+| Elemento | Como construir |
+|---|---|
+| Fundo, painel e indicadores | CSS global e HTML próprio com `st.html`, sem interação |
+| Anéis | SVG no HTML do painel |
+| Faixas e barras clicáveis | Plotly, com fundo transparente |
+| Barra embutida na fila | `ProgressColumn` do `st.dataframe` |
+| Classe e linha selecionada | Texto com ícone (`✓`, `▲`, `✕`) e marcador na primeira coluna |
+
+A faixa de mais de 60 dias fica fora do visual enquanto não tiver dados (CA5).
 
 ## Verificação da constituição
 
