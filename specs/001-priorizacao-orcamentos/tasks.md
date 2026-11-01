@@ -52,8 +52,8 @@ Cada tarefa gera um commit e só é marcada depois de verificada. Se uma tarefa 
 
 - [x] **T14** Rodar todos os testes e o roteiro manual de cada linha da matriz de cross filter no navegador.
   - Verificação: CA1 a CA10 aprovados.
-- [ ] **T15** Comparar o dashboard com o Figma e atualizar spec e plano com o que mudou.
-- [ ] **T16** Criar o `README.md` com instruções para subir e usar o projeto.
+- [x] **T15** Comparar o dashboard com o Figma e atualizar spec e plano com o que mudou. O dashboard passou a ser a referência visual (princípio 10).
+- [x] **T16** Criar o `README.md` com instruções para subir e usar o projeto.
 
 ## Dependências
 
