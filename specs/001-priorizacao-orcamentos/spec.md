@@ -27,7 +27,7 @@ Uma única pessoa: o dono ou gestor da distribuidora, que decide o que liberar, 
 ## Regras de negócio
 
 - **RN1 – Fila:** contém pedidos com status `novo` ou `cotado` que têm itens. Mensagens sem itens ficam fora e são apenas contadas como "não cotáveis".
-- **RN2 – Valor do orçamento:** soma de quantidade × preço × (1 − desconto). O preço por volume vale apenas para quantidade acima de 100.
+- **RN2 – Valor do orçamento:** soma de quantidade × preço × (1 − desconto). O preço por volume vale apenas para quantidade acima de 100. O total de cada orçamento é arredondado para 2 casas, com meio centavo para cima.
 - **RN3 – Saldo do título:** valor do título menos os créditos do extrato com a mesma NF até a data de referência, nunca negativo. Crédito sem NF não abate.
 - **RN4 – Vencido:** título com saldo maior que zero e vencimento anterior à data de referência.
 - **RN5 – Cliente bloqueado:** tem título vencido há mais de 15 dias. Exatamente 15 dias não bloqueia.
@@ -71,13 +71,13 @@ Limite conhecido: títulos não têm itens de produto com ligação direta nos d
 
 Sem seleção ativa, com data de referência 28/08/2026:
 
-- **CA1:** A fila tem 114 orçamentos, somando R$ 345.563,88.
+- **CA1:** A fila tem 114 orçamentos, somando R$ 345.563,89.
 - **CA2:** A classificação retorna:
 
 | Classe | Orçamentos | Valor |
 |---|---|---:|
 | Atendível | 13 | R$ 20.399,52 |
-| Ruptura | 67 | R$ 199.191,06 |
+| Ruptura | 67 | R$ 199.191,07 |
 | Bloqueado | 34 | R$ 125.973,30 |
 
 - **CA3:** São 4 mensagens não cotáveis: PED012, PED016, PED018 e PED027.

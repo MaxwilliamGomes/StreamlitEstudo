@@ -25,7 +25,7 @@ Cada tarefa gera um commit e só é marcada depois de verificada. Se uma tarefa 
   - Verificação: contagem de linhas igual à dos CSVs e nenhuma chave quebrada.
 - [x] **T06** Criar `vw_titulo_saldo`, `vw_cliente_bloqueado` e `vw_credito_sem_nf`, com testes primeiro.
   - Cobre: RN3, RN4, RN5, RN9, RF7, CA4, CA5, CA10 e a parte de clientes do CA6.
-- [ ] **T07** Criar `vw_orcamento_item`, `vw_produto_ruptura` e `vw_orcamento_classificado`, com testes primeiro.
+- [x] **T07** Criar `vw_orcamento_item`, `vw_produto_ruptura` e `vw_orcamento_classificado`, com testes primeiro.
   - Cobre: RN1, RN2, RN6, RN7, RN8, CA1, CA2, CA3, CA7 e a parte de produtos do CA6.
 
 ## Fase 4: Mockup
