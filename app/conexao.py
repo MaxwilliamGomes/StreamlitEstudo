@@ -15,4 +15,5 @@ def conectar():
         dbname=env["POSTGRES_DB"],
         user=env["POSTGRES_USER"],
         password=env["POSTGRES_PASSWORD"],
+        connect_timeout=5,
     )
