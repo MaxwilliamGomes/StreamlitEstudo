@@ -105,7 +105,13 @@ Não foi testado: desmarcar uma linha pela própria tabela. O caso entra no rote
 
 ## Figma
 
-O mockup vem depois deste plano e antes da construção dos visuais. Ele define layout, hierarquia e cores de uma página única, com os componentes acima. Toda divergência será registrada aqui (princípio 10).
+[Mockup no Figma](https://www.figma.com/design/uYQsNc90YJTsOzRnH2g9Pr), com os estados padrão e cliente selecionado. Ele define layout, hierarquia e cores de uma página única, em tema escuro, com fonte Source Sans 3. Toda divergência será registrada aqui (princípio 10).
+
+Decisões de viabilidade no Streamlit:
+
+- A classe aparece como texto com ícone (`✓`, `▲`, `✕`), pois `st.dataframe` não exibe pílulas coloridas.
+- A primeira coluna da fila marca a linha selecionada, conforme o risco validado na T03.
+- A faixa de mais de 60 dias fica fora da legenda enquanto não tiver dados (CA5).
 
 ## Verificação da constituição
 
