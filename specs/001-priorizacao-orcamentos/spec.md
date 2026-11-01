@@ -39,6 +39,8 @@ Uma única pessoa: o dono ou gestor da distribuidora, que decide o que liberar, 
 - **RN8 – Ordem da fila:** Atendível, depois Ruptura, depois Bloqueado. Dentro de cada classe, do maior para o menor valor.
 - **RN9 – Faixas de atraso:** 1–15, 16–30, 31–60 e mais de 60 dias.
 
+- **RN10 – KPIs com seleção ativa:** "Vencido" soma apenas os títulos que atendem à seleção. "Clientes bloqueados" conta os clientes bloqueados que têm algum desses títulos, mesmo que o bloqueio venha de outro título do cliente.
+
 ## Requisitos funcionais
 
 - **RF1:** Exibir KPIs de valor na fila, quantidade por classe, valor vencido, clientes bloqueados e produtos em ruptura. (PN1, PN2, PN4)

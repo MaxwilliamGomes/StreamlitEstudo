@@ -38,11 +38,11 @@ Cada tarefa gera um commit e só é marcada depois de verificada. Se uma tarefa 
 - [x] **T09** Criar `app/dados.py`, com leitura das views e cache.
 - [x] **T10** Criar `app/selecao.py` e `tests/test_selecao.py`, com testes primeiro.
   - Cobre: RF5, RF6, a matriz de cross filter, CA8 e CA9.
-- [ ] **T11** Criar KPIs, alerta e fila em `app/visuais.py`.
+- [x] **T11** Criar KPIs, alerta e fila em `app/visuais.py`.
   - Cobre: RF1, RF2, RF7.
-- [ ] **T12** Criar os gráficos de vencidos e rupturas em `app/visuais.py`.
+- [x] **T12** Criar os gráficos de vencidos e rupturas em `app/visuais.py`.
   - Cobre: RF3, RF4.
-- [ ] **T13** Montar `app/main.py` e ligar os visuais à seleção, conforme o Figma.
+- [x] **T13** Montar `app/main.py` e ligar os visuais à seleção, conforme o Figma.
   - Cobre: RF5, RF6.
 
 ## Fase 6: Validação

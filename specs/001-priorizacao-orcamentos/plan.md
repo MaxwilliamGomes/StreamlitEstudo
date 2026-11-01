@@ -128,6 +128,19 @@ Decisões de viabilidade no Streamlit:
 
 A faixa de mais de 60 dias fica fora do visual enquanto não tiver dados (CA5).
 
+Divergências entre o Figma e o dashboard:
+
+| Divergência | Motivo |
+|---|---|
+| A fila ocupa toda a largura, abaixo de vencidos e rupturas | O mockup B omitiu a coluna Motivo, exigida pelo RF2, que não cabia na coluna central |
+| Indicadores e alerta ficam na mesma linha, acima dos gráficos | Consequência da fila em largura total |
+| Rupturas lista todos os produtos, com rolagem | Limitar a 7 impediria selecionar os demais (H3) |
+| Faixas abaixo de R$ 10 mil mostram o valor completo | Regra única de formatação |
+| Anel entra como imagem SVG | `st.html` remove SVG direto |
+| Tabela tem a coluna de seleção do Streamlit | Componente nativo do `st.dataframe` |
+
+Limites do `st.dataframe` e do Streamlit: alterações em `app/visuais.py` exigem reiniciar o servidor, porque módulos importados ficam em memória.
+
 ## Verificação da constituição
 
 | Princípio | Atendido por |
