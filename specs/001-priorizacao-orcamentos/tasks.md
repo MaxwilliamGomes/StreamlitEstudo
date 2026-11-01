@@ -21,7 +21,7 @@ Cada tarefa gera um commit e só é marcada depois de verificada. Se uma tarefa 
 ## Fase 3: Dados e regras
 
 - [x] **T04** Criar `db/01_tabelas.sql`, com chaves e a tabela `parametros`.
-- [ ] **T05** Criar `scripts/carregar_dados.py`.
+- [x] **T05** Criar `scripts/carregar_dados.py`.
   - Verificação: contagem de linhas igual à dos CSVs e nenhuma chave quebrada.
 - [ ] **T06** Criar `vw_titulo_saldo`, `vw_cliente_bloqueado` e `vw_credito_sem_nf`, com testes primeiro.
   - Cobre: RN3, RN4, RN5, RN9, RF7, CA4, CA5, CA10 e a parte de clientes do CA6.

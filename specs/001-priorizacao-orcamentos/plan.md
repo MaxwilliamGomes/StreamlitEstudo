@@ -14,7 +14,7 @@
 | Acesso ao banco | psycopg 3 | Cliente direto, com SQL explícito para estudo |
 | Testes | pytest | Já instalado |
 
-Dependências ficam em um ambiente virtual, com versões fixadas em `requirements.txt`. Credenciais ficam em um `.env`, fora do versionamento.
+Dependências ficam em um ambiente virtual, com versões fixadas em `requirements.txt`. pandas 2.2.3 e NumPy 2.2.2 são obrigatórios, porque `gerar_dados.py` falha ou muda de resultado em versões mais novas. Credenciais ficam em um `.env`, fora do versionamento.
 
 ## Estrutura
 
@@ -29,6 +29,7 @@ scripts/
   gerar_dados.py        (já existe)
   carregar_dados.py     recria as tabelas a partir dos CSVs
 app/
+  conexao.py            conexão com o banco, usada por app, scripts e testes
   main.py               monta a página
   dados.py              lê as views
   selecao.py            estado e aplicação do cross filter
@@ -54,6 +55,7 @@ tests/
 | `vw_produto_ruptura` | RN6 | Demanda, estoque e prazo dos produtos em ruptura |
 | `vw_orcamento_classificado` | RN2, RN7, RN8 | Um orçamento por linha, com classe, motivo e ordem |
 | `vw_credito_sem_nf` | RF7 | Créditos sem NF até a data de referência |
+| `vw_mensagem_nao_cotavel` | RN1 | Pedidos em aberto sem itens |
 
 A NF do extrato é extraída da descrição com a expressão `NF-[0-9]+`.
 
